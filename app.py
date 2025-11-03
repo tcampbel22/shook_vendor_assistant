@@ -13,6 +13,7 @@ st.markdown("""
             background-color: #FFFFFF;
             color: #0E0E0E;
             border: 1px solid #05FF8E;
+            caret-color: #0E0E0E;
         }
         .stButton>button {
             background-color: #05FF8E;
@@ -31,11 +32,11 @@ st.title("💬 Shook Vendor Assistant")
 st.caption("Ask me common vendor or freelancer questions.")
 
 faq = {
-    ("invoice", "invoices", "invoicing", "bill"): "📄 Send invoices to finance@shook.digital with your PO number or project reference.",
+    ("invoice", "invoices", "invoicing", "bill", "billing"): "📄 Send invoices to finance@shook.digital with your PO number or project reference.",
     ("payment", "paid", "pay", "paycheck", "compensation"): "💰 Payments are processed on the 15th and 30th of each month.",
     ("feedback", "review", "comment"): "🗣️ Contact your project lead or ops@shook.digital.",
     ("project files", "files", "documents", "assets", "drive", "project briefs"): "📁 Access shared Drive folders per project, or contact ops if you're missing access.",
-    ("update details", "update", "change", "modify"): "✏️ Submit company info changes through the provided form link.",
+    ("update details", "update", "change", "modify", "edit"): "✏️ Submit company info changes through the provided form link.",
     ("turnaround", "timeline", "time", "how long", "duration"): "⏱️ Design: 3–5 days | Web: 5–10 days.",
     ("slack", "chat", "messaging"): "💬 Join our Partner Ops Slack workspace!"
 }
@@ -51,6 +52,6 @@ if submitted:
     user_q_lower = user_q.lower()
     response = next(
         (answer for keywords, answer in faq.items() if any(k in user_q_lower for k in keywords)),
-        "🤔 Please email ops@shook.digital for that."
+        "🤔 I'm sorry I could not find an answer. Please try again or email ops@shook.digital for that."
     )
     st.success(response)
